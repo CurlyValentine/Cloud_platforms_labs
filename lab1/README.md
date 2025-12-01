@@ -27,7 +27,8 @@ Date of finished: 02.12.2025
 vtantsiura-sa-lab1@cloud-platforms-as-the-basis.iam.gserviceaccount.com
 ```
 
-![Create Service Account](screenshots/01_create_service_account.png)
+![telegram-cloud-photo-size-2-5291816239355334172-y](https://github.com/user-attachments/assets/b8677e8b-649c-4b35-9aad-01a654e345d1)
+
 *Создание service account vtantsiura-sa-lab1 в Google Cloud Console.*
 
 ### 2. Создание виртуальной машины в Google Cloud Platform
@@ -37,14 +38,16 @@ vtantsiura-sa-lab1@cloud-platforms-as-the-basis.iam.gserviceaccount.com
 - Внешний IP: `34.69.245.171 (nic0)`
 - Статус: запущена (зеленая галочка)
 
-![VM Instances](screenshots/02_vm_instances.png)
+![telegram-cloud-photo-size-2-5291816239355334182-y](https://github.com/user-attachments/assets/b0100e99-73f4-47c8-bf65-6ff4f0b73690)
+
 *Список VM instances в Google Cloud Console. Видна созданная VM vtantsiura-vm-lab1 со статусом "Running".*
 
 ### 3. Подключение к VM через SSH
 
 Выполнено подключение к виртуальной машине через SSH-in-browser интерфейс Google Cloud Platform. Пользователь: `tanzuraseva@vtantsiura-vm-lab1`.
 
-![SSH Connection](screenshots/03_ssh_connection.png)
+![telegram-cloud-photo-size-2-5291816239355334185-y](https://github.com/user-attachments/assets/b22b8638-f25b-463c-80e6-f797e2116ac3)
+
 *Подключение к VM через SSH-in-browser интерфейс Google Cloud Platform.*
 
 ### 4. Работа с Google Cloud Storage
@@ -61,7 +64,8 @@ gsutil ls gs://lab1-bucket-itmo/
 - `pic2.jpg`
 - `pic3.jpeg`
 
-![GSutil List](screenshots/04_gsutil_list.png)
+![telegram-cloud-photo-size-2-5291816239355334195-y](https://github.com/user-attachments/assets/0058e682-dd60-4b2f-8fb7-9dcfee5fd8a0)
+
 *Просмотр содержимого bucket с помощью команды gsutil ls.*
 
 #### 4.2. Копирование файлов из bucket
@@ -80,24 +84,20 @@ gsutil cp gs://lab1-bucket-itmo/pic3.jpeg .
 
 Все файлы успешно загружены в домашнюю директорию пользователя.
 
-![GSutil Copy](screenshots/05_gsutil_copy.png)
+![telegram-cloud-photo-size-2-5291816239355334195-y](https://github.com/user-attachments/assets/5cc7fd99-106e-4117-94f4-46643a9dc7a3)
+
 *Копирование файлов из bucket на локальную машину и проверка результата командой ls -lah.*
 
 ### 5. Настройка IAM permissions
 
 Service account `vtantsiura-sa-lab1` был добавлен в IAM с ролью `Compute Viewer`. Это позволяет service account просматривать ресурсы Compute Engine, но не дает полных прав доступа.
 
-![IAM Permissions](screenshots/06_iam_permissions.png)
+![telegram-cloud-photo-size-2-5291816239355334201-y](https://github.com/user-attachments/assets/32a296e3-ddec-453a-94b2-a0e3e5d30b72)
+
 *Настройка IAM permissions для service account. Видно, что vtantsiura-sa-lab1 имеет роль Compute Viewer.*
 
-### 6. Просмотр списка Service Accounts
 
-Созданный service account `vtantsiura-sa-lab1` отображается в списке service accounts проекта со статусом "Enabled".
-
-![Service Accounts List](screenshots/07_service_accounts_list.png)
-*Список service accounts в проекте. Виден созданный vtantsiura-sa-lab1 со статусом Enabled.*
-
-### 7. Проблема с доступом к Storage
+### 6. Проблема с доступом к Storage
 
 При попытке выполнить команду без указания destination:
 ```bash
@@ -111,7 +111,8 @@ AccessDeniedException: 403 vtantsiura-sa-lab1@cloud-platforms-as-the-basis.iam.g
 
 Это указывает на то, что service account, используемый VM, не имеет необходимых прав для работы с Google Cloud Storage bucket. Для решения этой проблемы необходимо добавить роль `Storage Object Viewer` или `Storage Admin` для service account.
 
-![Access Denied Error](screenshots/08_access_denied_error.png)
+![telegram-cloud-photo-size-2-5291816239355334204-y](https://github.com/user-attachments/assets/a44074db-2666-425e-a9d5-0a46f79a30d2)
+
 *Ошибка доступа при попытке выполнить команду gsutil cp без указания destination. Service account не имеет прав storage.objects.list.*
 
 ## Выводы
