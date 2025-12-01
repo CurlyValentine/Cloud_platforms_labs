@@ -20,26 +20,36 @@ Date of finished: 02.12.2025
 
 ## Описание выполненной работы
 
-### 1. Создание виртуальной машины в Google Cloud Platform
+### 1. Создание Service Account
+
+Создан service account с именем `vtantsiura-sa-lab1` в проекте `cloud-platforms-as-the-basis`. Service account имеет email:
+```
+vtantsiura-sa-lab1@cloud-platforms-as-the-basis.iam.gserviceaccount.com
+```
+
+![Create Service Account](screenshots/01_create_service_account.png)
+*Создание service account vtantsiura-sa-lab1 в Google Cloud Console.*
+
+### 2. Создание виртуальной машины в Google Cloud Platform
 
 Была создана виртуальная машина `vtantsiura-vm-lab1` в зоне `us-central1-c` проекта `cloud-platforms-as-the-basis`. VM имеет:
 - Внутренний IP: `10.128.0.57 (nic0)`
 - Внешний IP: `34.69.245.171 (nic0)`
 - Статус: запущена (зеленая галочка)
 
-![VM Instances](screenshots/01_vm_instances.png)
+![VM Instances](screenshots/02_vm_instances.png)
 *Список VM instances в Google Cloud Console. Видна созданная VM vtantsiura-vm-lab1 со статусом "Running".*
 
-### 2. Подключение к VM через SSH
+### 3. Подключение к VM через SSH
 
 Выполнено подключение к виртуальной машине через SSH-in-browser интерфейс Google Cloud Platform. Пользователь: `tanzuraseva@vtantsiura-vm-lab1`.
 
-![SSH Connection](screenshots/02_ssh_connection.png)
+![SSH Connection](screenshots/03_ssh_connection.png)
 *Подключение к VM через SSH-in-browser интерфейс Google Cloud Platform.*
 
-### 3. Работа с Google Cloud Storage
+### 4. Работа с Google Cloud Storage
 
-#### 3.1. Просмотр содержимого bucket
+#### 4.1. Просмотр содержимого bucket
 
 Выполнена команда для просмотра содержимого bucket `lab1-bucket-itmo`:
 ```bash
@@ -51,10 +61,10 @@ gsutil ls gs://lab1-bucket-itmo/
 - `pic2.jpg`
 - `pic3.jpeg`
 
-![GSutil List](screenshots/03_gsutil_list.png)
+![GSutil List](screenshots/04_gsutil_list.png)
 *Просмотр содержимого bucket с помощью команды gsutil ls.*
 
-#### 3.2. Копирование файлов из bucket
+#### 4.2. Копирование файлов из bucket
 
 Успешно скопированы все три файла из bucket на локальную машину:
 ```bash
@@ -70,18 +80,8 @@ gsutil cp gs://lab1-bucket-itmo/pic3.jpeg .
 
 Все файлы успешно загружены в домашнюю директорию пользователя.
 
-![GSutil Copy](screenshots/04_gsutil_copy.png)
+![GSutil Copy](screenshots/05_gsutil_copy.png)
 *Копирование файлов из bucket на локальную машину и проверка результата командой ls -lah.*
-
-### 4. Создание Service Account
-
-Создан service account с именем `vtantsiura-sa-lab1` в проекте `cloud-platforms-as-the-basis`. Service account имеет email:
-```
-vtantsiura-sa-lab1@cloud-platforms-as-the-basis.iam.gserviceaccount.com
-```
-
-![Create Service Account](screenshots/05_create_service_account.png)
-*Создание service account vtantsiura-sa-lab1 в Google Cloud Console.*
 
 ### 5. Настройка IAM permissions
 
@@ -90,10 +90,14 @@ Service account `vtantsiura-sa-lab1` был добавлен в IAM с роль�
 ![IAM Permissions](screenshots/06_iam_permissions.png)
 *Настройка IAM permissions для service account. Видно, что vtantsiura-sa-lab1 имеет роль Compute Viewer.*
 
+### 6. Просмотр списка Service Accounts
+
+Созданный service account `vtantsiura-sa-lab1` отображается в списке service accounts проекта со статусом "Enabled".
+
 ![Service Accounts List](screenshots/07_service_accounts_list.png)
 *Список service accounts в проекте. Виден созданный vtantsiura-sa-lab1 со статусом Enabled.*
 
-### 6. Проблема с доступом к Storage
+### 7. Проблема с доступом к Storage
 
 При попытке выполнить команду без указания destination:
 ```bash
@@ -113,11 +117,11 @@ AccessDeniedException: 403 vtantsiura-sa-lab1@cloud-platforms-as-the-basis.iam.g
 ## Выводы
 
 В ходе лабораторной работы были выполнены следующие задачи:
-1. ✅ Создана виртуальная машина в Google Cloud Platform
-2. ✅ Выполнено подключение через SSH
-3. ✅ Изучена работа с Google Cloud Storage через утилиту `gsutil`
-4. ✅ Успешно скопированы файлы из bucket на локальную машину
-5. ✅ Создан service account
+1. ✅ Создан service account в Google Cloud Platform
+2. ✅ Создана виртуальная машина в Google Cloud Platform
+3. ✅ Выполнено подключение через SSH
+4. ✅ Изучена работа с Google Cloud Storage через утилиту `gsutil`
+5. ✅ Успешно скопированы файлы из bucket на локальную машину
 6. ✅ Настроены базовые IAM permissions
 7. ✅ Выявлена проблема с правами доступа service account к Storage bucket
 
