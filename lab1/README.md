@@ -27,9 +27,15 @@ Date of finished: 02.12.2025
 - Внешний IP: `34.69.245.171 (nic0)`
 - Статус: запущена (зеленая галочка)
 
+![VM Instances](screenshots/01_vm_instances.png)
+*Список VM instances в Google Cloud Console. Видна созданная VM vtantsiura-vm-lab1 со статусом "Running".*
+
 ### 2. Подключение к VM через SSH
 
 Выполнено подключение к виртуальной машине через SSH-in-browser интерфейс Google Cloud Platform. Пользователь: `tanzuraseva@vtantsiura-vm-lab1`.
+
+![SSH Connection](screenshots/02_ssh_connection.png)
+*Подключение к VM через SSH-in-browser интерфейс Google Cloud Platform.*
 
 ### 3. Работа с Google Cloud Storage
 
@@ -44,6 +50,9 @@ gsutil ls gs://lab1-bucket-itmo/
 - `pic1.jpg`
 - `pic2.jpg`
 - `pic3.jpeg`
+
+![GSutil List](screenshots/03_gsutil_list.png)
+*Просмотр содержимого bucket с помощью команды gsutil ls.*
 
 #### 3.2. Копирование файлов из bucket
 
@@ -61,6 +70,9 @@ gsutil cp gs://lab1-bucket-itmo/pic3.jpeg .
 
 Все файлы успешно загружены в домашнюю директорию пользователя.
 
+![GSutil Copy](screenshots/04_gsutil_copy.png)
+*Копирование файлов из bucket на локальную машину и проверка результата командой ls -lah.*
+
 ### 4. Создание Service Account
 
 Создан service account с именем `vtantsiura-sa-lab1` в проекте `cloud-platforms-as-the-basis`. Service account имеет email:
@@ -68,9 +80,18 @@ gsutil cp gs://lab1-bucket-itmo/pic3.jpeg .
 vtantsiura-sa-lab1@cloud-platforms-as-the-basis.iam.gserviceaccount.com
 ```
 
+![Create Service Account](screenshots/05_create_service_account.png)
+*Создание service account vtantsiura-sa-lab1 в Google Cloud Console.*
+
 ### 5. Настройка IAM permissions
 
 Service account `vtantsiura-sa-lab1` был добавлен в IAM с ролью `Compute Viewer`. Это позволяет service account просматривать ресурсы Compute Engine, но не дает полных прав доступа.
+
+![IAM Permissions](screenshots/06_iam_permissions.png)
+*Настройка IAM permissions для service account. Видно, что vtantsiura-sa-lab1 имеет роль Compute Viewer.*
+
+![Service Accounts List](screenshots/07_service_accounts_list.png)
+*Список service accounts в проекте. Виден созданный vtantsiura-sa-lab1 со статусом Enabled.*
 
 ### 6. Проблема с доступом к Storage
 
@@ -85,6 +106,9 @@ AccessDeniedException: 403 vtantsiura-sa-lab1@cloud-platforms-as-the-basis.iam.g
 ```
 
 Это указывает на то, что service account, используемый VM, не имеет необходимых прав для работы с Google Cloud Storage bucket. Для решения этой проблемы необходимо добавить роль `Storage Object Viewer` или `Storage Admin` для service account.
+
+![Access Denied Error](screenshots/08_access_denied_error.png)
+*Ошибка доступа при попытке выполнить команду gsutil cp без указания destination. Service account не имеет прав storage.objects.list.*
 
 ## Выводы
 
