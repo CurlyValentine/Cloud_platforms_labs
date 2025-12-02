@@ -1,4 +1,4 @@
-# Lab2 Report
+# Lab3 Report
 
 University: [ITMO University](https://itmo.ru/ru/)
 
@@ -12,7 +12,7 @@ Group: U4225
 
 Author: Tantsiura Valentin Olegovich
 
-Lab: Lab2
+Lab: Lab3
 
 Date of create: 02.12.2025
 
