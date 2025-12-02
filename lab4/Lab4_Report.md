@@ -30,7 +30,7 @@
 
 Используется минимальный набор сервисов для проверки гипотезы. Фронтенд и бэкенд находятся в одном контейнере Cloud Run. База данных — Firestore (NoSQL) для быстрого старта без жесткой схемы. Прямое подключение к Vertex AI.
 
-[ВСТАВИТЬ СКРИНШОТ СХЕМЫ MVP]
+<img width="737" height="280" alt="image" src="https://github.com/user-attachments/assets/899d5e74-1387-4634-b679-5a644432ff69" />
 
 ### 1.2. Тестирование партнерами (Beta)
 
@@ -38,7 +38,7 @@
 
 Произошло разделение на Frontend и Backend сервисы. Добавлен Load Balancer для распределения входящего трафика. Подключен Cloud Storage для хранения загружаемых изображений. Внедрен CI/CD пайплайн через Cloud Build для автоматического обновления контейнеров.
 
-[ВСТАВИТЬ СКРИНШОТ СХЕМЫ BETA]
+<img width="643" height="264" alt="image" src="https://github.com/user-attachments/assets/320bfd08-a7d0-49d4-98b3-682be0679730" />
 
 ### 1.3. Продуктовое решение (Production)
 
@@ -46,7 +46,7 @@
 
 Добавлен слой безопасности (Cloud Armor) и ускорения контента (Cloud CDN). Внедрено кэширование (Memorystore Redis) для снижения расходов на AI-запросы. База данных мигрирована на Cloud SQL (PostgreSQL) с репликацией для надежности. Настроен автоскейлинг инстансов.
 
-[ВСТАВИТЬ СКРИНШОТ СХЕМЫ PRODUCTION]
+<img width="905" height="493" alt="image" src="https://github.com/user-attachments/assets/225ee5d2-3b86-4283-b793-a933282e84c1" />
 
 ## 2. Экономическая модель (Monthly Cost Estimate)
 
